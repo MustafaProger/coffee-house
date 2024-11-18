@@ -1,0 +1,11 @@
+.line {
+    width: 60px;
+	border-top: 1px solid white;
+}
+
+.logo-line {
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    gap: 25px;
+}
