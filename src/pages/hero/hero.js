@@ -24,7 +24,7 @@ function Hero() {
 					</p>
 					<Logo theme="white"/>
 					<a
-						href='#more'
+						href='#about'
 						className='btn'>
 						Узнать больше
 					</a>

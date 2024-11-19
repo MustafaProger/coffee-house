@@ -9,7 +9,7 @@ import img_3 from "./img/img-3.svg";
 class OurBest extends Component {
 	render() {
 		return (
-			<section className='our-best'>
+			<section className='our-best' id="our-best">
 				<div className='container'>
 					<h1 className='title our-best__title'>Наше лучшее</h1>
 					<div className='cards cards-static'>
