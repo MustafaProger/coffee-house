@@ -1,36 +1,38 @@
 .main {
-    max-height: 800px;
-    height: 100vh;
-    padding: 0 20px;
-    background-image: url('./hero.png'); 
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat; 
+	max-height: 800px;
+	min-height: 500px;
+	height: 100vh;
+	padding: 0 20px;
+	background-image: url("./hero.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .content {
-    display: flex;
-    max-height: 600px;
-    height: 100vh;
-    max-width: 678px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    margin: 0 auto;
+	display: flex;
+	max-height: 600px;
+	min-height: 400px;
+	height: 100vh;
+	max-width: 678px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: white;
+	margin: 0 auto;
 }
 
 .btn {
-    padding: 15px 60px;
-    background: none;
-    border: 2px solid white;
-    border-radius: 3px;
-    color: white;
-    transition: all 0.3s;
+	padding: 15px 60px;
+	background: none;
+	border: 2px solid white;
+	border-radius: 3px;
+	color: white;
+	transition: all 0.3s;
 }
 
 .btn:hover {
-    color: #000;
-    background-color: #fff;
+	color: #000;
+	background-color: #fff;
 }

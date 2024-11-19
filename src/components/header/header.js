@@ -1,18 +1,33 @@
 import { Component } from "react";
+import styled from "styled-components";
 
 import "./header.css";
+
+const Link = styled.a`
+  position: relative;
+
+  &::after {
+    color: ${props => props.theme} !important;
+  }
+
+  &::before {
+    background-color: ${props => props.theme} !important;
+  }
+`;
 
 class Header extends Component {
 	render() {
 		const { theme } = this.props;
 		const clazz = theme === "white" ? "white" : "black";
-		console.log(clazz);
+		const clazzAnimation = theme === 'white' ? '#A89050' : '#563306'
+
 		return (
 			<header className={clazz}>
 				<nav className='navbar'>
-					<a
+					<Link theme={clazzAnimation}
 						href='#house'
-						className='link'>
+						className='link'
+						data-replace='Кофейный дом'>
 						<svg
 							width='35'
 							height='35'
@@ -40,18 +55,20 @@ class Header extends Component {
 								fill={clazz}
 							/>
 						</svg>
-						Кофейный дом
-					</a>
-					<a
+						<span>Кофейный дом</span>
+					</Link>
+					<Link theme={clazzAnimation}
 						href='#our-coffee'
-						className='link'>
-						О нашем кофе
-					</a>
-					<a
+						className='link'
+						data-replace='О нашем кофе'>
+						<span>О нашем кофе</span>
+					</Link>
+					<Link theme={clazzAnimation}
 						href='#for-lover'
-						className='link'>
-						Для настоящих ценителей
-					</a>
+						className='link'
+						data-replace='Для настоящих ценителей'>
+						<span>Для настоящих ценителей</span>
+					</Link>
 				</nav>
 			</header>
 		);

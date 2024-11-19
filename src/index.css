@@ -1,25 +1,26 @@
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Forum", serif;
-  font-weight: 400;
-  font-style: normal;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Forum", serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .container {
-  padding: 0 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+	padding: 0 20px;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 .title {
-  font-size: 26px;
-  text-align: center;
+	font-size: 26px;
+	text-align: center;
 }
 
 .subtitle {
-  font-size: 17px;
-  text-align: center;
-  line-height: 27px;
+	font-size: 17px;
+	text-align: center;
+	line-height: 27px;
 }
+
