@@ -1,4 +1,5 @@
 .main {
+    max-height: 800px;
     height: 100vh;
     padding: 0 20px;
     background-image: url('./hero.png'); 
@@ -9,7 +10,8 @@
 
 .content {
     display: flex;
-    height: 80vh;
+    max-height: 600px;
+    height: 100vh;
     max-width: 678px;
     flex-direction: column;
     align-items: center;

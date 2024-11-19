@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import Hero from './pages/hero/hero';
 import About from './pages/about/about';
 import OurBest from './pages/our-best/our-best';
+import Footer from './components/footer/footer';
 
 import './index.css';
 
@@ -14,6 +15,8 @@ root.render(
     <Hero />
     <About />
     <OurBest />
+    <Footer />
+    
   </React.StrictMode>
 );
 

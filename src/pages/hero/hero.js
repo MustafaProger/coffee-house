@@ -6,7 +6,7 @@ function Hero() {
 	return (
 		<main className='main'>
 			<div className='container'>
-				<Header />
+				<Header theme="white"/>
 				<div className='content'>
 					<h1 style={{ fontSize: 40, letterSpacing: 1, marginBottom: 10 }}>
 						Все, что вы цените в кофе
