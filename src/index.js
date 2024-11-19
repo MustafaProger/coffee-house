@@ -4,6 +4,7 @@ import reportWebVitals from './reportWebVitals';
 
 import Hero from './pages/hero/hero';
 import About from './pages/about/about';
+import OurBest from './pages/our-best/our-best';
 
 import './index.css';
 
@@ -12,6 +13,7 @@ root.render(
   <React.StrictMode>
     <Hero />
     <About />
+    <OurBest />
   </React.StrictMode>
 );
 
