@@ -1,30 +1,52 @@
 import { Component } from "react";
 import styled from "styled-components";
+import logo from "./logo.svg";
 
 import "./header.css";
 
 const Link = styled.a`
-  position: relative;
+	position: relative;
 
-  &::after {
-    color: ${props => props.theme} !important;
-  }
+	&::after {
+		color: ${(props) => props.theme} !important;
+	}
 
-  &::before {
-    background-color: ${props => props.theme} !important;
-  }
+	&::before {
+		background-color: ${(props) => props.theme} !important;
+	}
 `;
 
 class Header extends Component {
+	burgerActive = (e) => {
+		e.target.classList.toggle("active");
+		document.querySelector(".navbar").classList.toggle("active");
+		document.querySelector(".menu-bg").classList.toggle("active");
+		document.querySelector("body").classList.toggle("no-scroll");
+
+	};
+
 	render() {
 		const { theme } = this.props;
 		const clazz = theme === "white" ? "white" : "black";
-		const clazzAnimation = theme === 'white' ? '#A89050' : '#563306'
+		const clazzAnimation = theme === "white" ? "#A89050" : "#A89050";
 
 		return (
 			<header className={clazz}>
+				<div class='menu-bg'></div>
+				<div className='logo'>
+					{" "}
+					<img
+						src={logo}
+						alt=''
+						style={{ width: 30, height: 30 }}
+					/>
+				</div>
+				<div
+					className='header__burger'
+					onClick={(e) => this.burgerActive(e)}></div>
 				<nav className='navbar'>
-					<Link theme={clazzAnimation}
+					<Link
+						theme={clazzAnimation}
 						href='#house'
 						className='link'
 						data-replace='Кофейный дом'>
@@ -57,13 +79,15 @@ class Header extends Component {
 						</svg>
 						<span>Кофейный дом</span>
 					</Link>
-					<Link theme={clazzAnimation}
+					<Link
+						theme={clazzAnimation}
 						href='#our-coffee'
 						className='link'
 						data-replace='О нашем кофе'>
 						<span>О нашем кофе</span>
 					</Link>
-					<Link theme={clazzAnimation}
+					<Link
+						theme={clazzAnimation}
 						href='#for-lover'
 						className='link'
 						data-replace='Для настоящих ценителей'>
