@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
-import Main from './pages/main/main';
+
+import Hero from './pages/hero/hero';
+import About from './pages/about/about';
+
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Main />
+    <Hero />
+    <About />
   </React.StrictMode>
 );
 

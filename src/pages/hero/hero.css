@@ -1,7 +1,7 @@
 .main {
     height: 100vh;
     padding: 0 20px;
-    background-image: url('./main.png'); 
+    background-image: url('./hero.png'); 
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 

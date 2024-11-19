@@ -1,26 +1,28 @@
 import Header from "../../components/header/header";
 import Logo from "../../components/logo-line/logo-line";
-import "./main.css";
+import "./hero.css";
 
-function Main() {
+function Hero() {
 	return (
 		<main className='main'>
 			<div className='container'>
 				<Header />
 				<div className='content'>
-					<h1 style={{ fontSize: 40, letterSpacing: 1, marginBottom: 20 }}>
-          Все, что вы цените в кофе
+					<h1 style={{ fontSize: 40, letterSpacing: 1, marginBottom: 10 }}>
+						Все, что вы цените в кофе
 					</h1>
-					<Logo />
 					<p
 						style={{
 							fontSize: 26,
 							letterSpacing: 1,
-							marginTop: 20,
+							marginTop: 10,
+							marginBottom: 0,
 							lineHeight: 1.5,
 						}}>
-						Мы наполняем ваш день энергией и вкусом. Готовы насладиться нашими лучшими зернами?
+						Мы наполняем ваш день энергией и вкусом. Готовы насладиться нашими
+						лучшими зернами?
 					</p>
+					<Logo theme="white"/>
 					<a
 						href='#more'
 						className='btn'>
@@ -32,4 +34,4 @@ function Main() {
 	);
 }
 
-export default Main;
+export default Hero;

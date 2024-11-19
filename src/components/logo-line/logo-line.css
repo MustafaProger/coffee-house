@@ -1,11 +1,20 @@
 .line {
     width: 60px;
-	border-top: 1px solid white;
+    border-top: 1px solid;
 }
 
 .logo-line {
     display: flex;
     align-items: center;
-	justify-content: center;
+    justify-content: center;
     gap: 25px;
+    padding: 20px 0;
+}
+
+.logo-line.white .line {
+    border-color: white;
+}
+
+.logo-line.black .line {
+    border-color: black;
 }
