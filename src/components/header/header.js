@@ -17,6 +17,17 @@ const StyledLink = styled(RouterLink)`
 `;
 
 class Header extends Component {
+
+	componentDidMount() {
+		document.querySelector("body").classList.remove("no-scroll");
+	}
+
+	componentDidUpdate(prevProps) {
+		if (this.props.location !== prevProps.location) {
+			document.querySelector("body").classList.remove("no-scroll");
+		}
+	}
+
     burgerActive = (e) => {
         e.target.classList.toggle("active");
         document.querySelector(".navbar").classList.toggle("active");

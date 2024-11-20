@@ -1,11 +1,11 @@
 import { Component } from "react";
-import Header from "../../components/header/header";
+import Hero from "./hero/hero";
 
 class OurCoffee extends Component {
     render() {
         return (
             <>
-                <Header theme="white"/>
+                <Hero/>
             </>
         )
     }

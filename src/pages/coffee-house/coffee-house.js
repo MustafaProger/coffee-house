@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom/client";
 import reportWebVitals from "../../reportWebVitals";
 
 import Hero from "./hero/hero";
