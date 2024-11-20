@@ -8,7 +8,7 @@
 	background-repeat: no-repeat;
 }
 
-.content {
+.main .content {
 	display: flex;
 	min-height: 600px;
 	height: 100%;
@@ -21,7 +21,7 @@
 	margin: 0 auto;
 }
 
-.btn {
+.main .btn {
 	padding: 15px 60px;
 	background: none;
 	border: 2px solid white;
@@ -30,7 +30,7 @@
 	transition: all 0.3s;
 }
 
-.btn:hover {
+.main .btn:hover {
 	color: #000;
 	background-color: #fff;
 }
