@@ -1,5 +1,6 @@
-import Header from "../../components/header/header";
-import Logo from "../../components/logo-line/logo-line";
+import Header from "../../../components/header/header";
+import Logo from "../../../components/logo-line/logo-line";
+
 import "./hero.css";
 
 function Hero() {

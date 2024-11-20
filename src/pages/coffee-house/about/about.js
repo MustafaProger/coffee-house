@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import Logo from "../../components/logo-line/logo-line";
+import Logo from "../../../components/logo-line/logo-line";
 import "./about.css";
 
 class About extends Component {

@@ -47,7 +47,7 @@ class Header extends Component {
 				<nav className='navbar'>
 					<Link
 						theme={clazzAnimation}
-						href='#house'
+						href='../../pages/coffee-house'
 						className='link'
 						data-replace='Кофейный дом'>
 						<svg
@@ -81,7 +81,7 @@ class Header extends Component {
 					</Link>
 					<Link
 						theme={clazzAnimation}
-						href='#our-coffee'
+						href='../../pages/our-coffee'
 						className='link'
 						data-replace='О нашем кофе'>
 						<span>О нашем кофе</span>

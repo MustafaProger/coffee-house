@@ -1,5 +1,5 @@
 import { Component } from "react";
-import StaticCards from "../../components/static-cards/static-cards";
+import StaticCards from "../../../components/static-cards/static-cards";
 
 import "./our-best.css";
 import img_1 from "./img/img-1.svg";
