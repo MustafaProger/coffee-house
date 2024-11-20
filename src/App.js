@@ -5,11 +5,11 @@ import OurCoffee from './pages/our-coffee/our-coffee';
 
 const App = () => {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename={process.env.PUBLIC_URL}> {/* это нужно для корректного пути на GitHub Pages */}
       <Routes>
-        <Route path="/coffee-house" element={<CoffeeHouse />} />
-        <Route path="/our-coffee" element={<OurCoffee />} />
-        <Route path="/" element={<CoffeeHouse />} />  {/* по умолчанию открывается CoffeeHouse */}
+        <Route exact path="/coffee-house" element={<CoffeeHouse />} />
+        <Route exact path="/our-coffee" element={<OurCoffee />} />
+        <Route exact path="/" element={<CoffeeHouse />} />  {/* по умолчанию открывается CoffeeHouse */}
       </Routes>
     </Router>
   );

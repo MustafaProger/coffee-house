@@ -1,55 +1,53 @@
 import { Component } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./logo.svg";
-
 import "./header.css";
 
-const Link = styled.a`
-	position: relative;
+const StyledLink = styled(RouterLink)`
+    position: relative;
 
-	&::after {
-		color: ${(props) => props.theme} !important;
-	}
+    &::after {
+        color: ${(props) => props.theme} !important;
+    }
 
-	&::before {
-		background-color: ${(props) => props.theme} !important;
-	}
+    &::before {
+        background-color: ${(props) => props.theme} !important;
+    }
 `;
 
 class Header extends Component {
-	burgerActive = (e) => {
-		e.target.classList.toggle("active");
-		document.querySelector(".navbar").classList.toggle("active");
-		document.querySelector(".menu-bg").classList.toggle("active");
-		document.querySelector("body").classList.toggle("no-scroll");
+    burgerActive = (e) => {
+        e.target.classList.toggle("active");
+        document.querySelector(".navbar").classList.toggle("active");
+        document.querySelector(".menu-bg").classList.toggle("active");
+        document.querySelector("body").classList.toggle("no-scroll");
+    };
 
-	};
+    render() {
+        const { theme } = this.props;
+        const clazz = theme === "white" ? "white" : "black";
+        const clazzAnimation = theme === "white" ? "#A89050" : "#A89050";
 
-	render() {
-		const { theme } = this.props;
-		const clazz = theme === "white" ? "white" : "black";
-		const clazzAnimation = theme === "white" ? "#A89050" : "#A89050";
-
-		return (
-			<header className={clazz}>
-				<div class='menu-bg'></div>
-				<div className='logo'>
-					{" "}
-					<img
-						src={logo}
-						alt=''
-						style={{ width: 30, height: 30 }}
-					/>
-				</div>
-				<div
-					className='header__burger'
-					onClick={(e) => this.burgerActive(e)}></div>
-				<nav className='navbar'>
-					<Link
-						theme={clazzAnimation}
-						href='../../pages/coffee-house'
-						className='link'
-						data-replace='Кофейный дом'>
+        return (
+            <header className={clazz}>
+                <div className='menu-bg'></div>
+                <div className='logo'>
+                    <img
+                        src={logo}
+                        alt=''
+                        style={{ width: 30, height: 30 }}
+                    />
+                </div>
+                <div
+                    className='header__burger'
+                    onClick={(e) => this.burgerActive(e)}></div>
+                <nav className='navbar'>
+                    <StyledLink
+                        theme={clazzAnimation}
+                        to='/coffee-house' // Используйте абсолютный путь
+                        className='link'
+                        data-replace='Кофейный дом'>
 						<svg
 							width='35'
 							height='35'
@@ -77,26 +75,27 @@ class Header extends Component {
 								fill={clazz}
 							/>
 						</svg>
-						<span>Кофейный дом</span>
-					</Link>
-					<Link
-						theme={clazzAnimation}
-						href='../../pages/our-coffee'
-						className='link'
-						data-replace='О нашем кофе'>
-						<span>О нашем кофе</span>
-					</Link>
-					<Link
-						theme={clazzAnimation}
-						href='#for-lover'
-						className='link'
-						data-replace='Для настоящих ценителей'>
-						<span>Для настоящих ценителей</span>
-					</Link>
-				</nav>
-			</header>
-		);
-	}
+                        <span>Кофейный дом</span>
+                    </StyledLink>
+                    <StyledLink
+                        theme={clazzAnimation}
+                        to='/our-coffee' // Используйте абсолютный путь
+                        className='link'
+                        data-replace='О нашем кофе'>
+                        <span>О нашем кофе</span>
+                    </StyledLink>
+                    <StyledLink
+                        theme={clazzAnimation}
+                        to='/' // Обратите внимание на путь, это главная страница
+                        className='link'
+                        data-replace='Для настоящих ценителей'>
+                        <span>Для настоящих ценителей</span>
+                    </StyledLink>
+                </nav>
+            </header>
+        );
+    }
 }
 
 export default Header;
+

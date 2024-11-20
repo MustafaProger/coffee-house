@@ -5,7 +5,7 @@ class OurCoffee extends Component {
     render() {
         return (
             <>
-                <Header theme="black"/>
+                <Header theme="white"/>
             </>
         )
     }
