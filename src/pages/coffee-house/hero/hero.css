@@ -34,3 +34,9 @@
 	color: #000;
 	background-color: #fff;
 }
+
+@media (max-width: 620px) {
+	.main p {
+		display: none;
+	}
+}

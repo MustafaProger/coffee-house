@@ -1,0 +1,31 @@
+.hero_our-coffee {
+	min-height: 250px;
+	height: 100%;
+	background-image: url("./hero.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.hero_our-coffee .content {
+	display: flex;
+	min-height: 250px;
+	height: 100%;
+	max-width: 678px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: white;
+	margin: 0 auto;
+}
+
+
+@media (max-width: 620px) {
+    .hero_our-coffee {
+        padding-bottom: 30px;
+    }
+    .hero_our-coffee .content {
+        justify-content: end;
+    }
+}
