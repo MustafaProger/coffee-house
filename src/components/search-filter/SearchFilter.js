@@ -8,33 +8,32 @@ class SearchFilter extends Component {
 	};
 
 	render() {
-		const { activeButton } = this.props;
+		const buttonsData = [
+			{ name: "All" },
+			{ name: "Central America" },
+			{ name: "Africa" },
+			{ name: "South America" },
+		];
+
+		const buttons = buttonsData.map(({ name, label }) => {
+			const active = this.props.activeButton === name;
+			const clazz = active ? "active" : "";
+			return (
+				<button
+					type='button'
+					className={`search-filter__btns-item ${clazz} my_style`}
+					key={name}
+					onClick={(e) => this.activeBtn(e)}>
+					{name}
+				</button>
+			);
+		});
 		return (
 			<div className='search-filter'>
 				<div className='container'>
 					<p className='subtitle search-filter__text'>или фильтрация</p>
 					<div className='search-filter__btns'>
-						<button
-							className={`search-filter__btns-item ${
-								activeButton === "Central America" ? "active" : ""
-							}`}
-							onClick={this.activeBtn}>
-							Central America
-						</button>
-						<button
-							className={`search-filter__btns-item ${
-								activeButton === "Africa" ? "active" : ""
-							}`}
-							onClick={this.activeBtn}>
-							Africa
-						</button>
-						<button
-							className={`search-filter__btns-item ${
-								activeButton === "South America" ? "active" : ""
-							}`}
-							onClick={this.activeBtn}>
-							South America
-						</button>
+						{buttons}
 					</div>
 				</div>
 			</div>

@@ -2,6 +2,16 @@ import { Component } from "react";
 import "./SearchPanel.css";
 
 class SearchPanel extends Component {
+
+	state = {
+		term: ''
+	}
+
+	updateTerm = (e) => {
+		this.setState({term: e.target.value})
+		this.props.onSearching(e.target.value);
+	}
+
 	render() {
 		return (
 			<div className='search-panel'>
@@ -11,6 +21,7 @@ class SearchPanel extends Component {
                         className="search-panel__input"
 						type='search'
 						placeholder='Название кофе'
+						onChange={(e) => this.updateTerm(e)}
 					/>
 				</div>
 			</div>

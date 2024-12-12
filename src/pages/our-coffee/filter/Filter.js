@@ -9,7 +9,7 @@ class Filter extends Component {
 		return (
 			<section
 				className='filter'>
-				<SearchPanel />
+				<SearchPanel onSearching={(e) => this.props.onSearching(e)}/>
 				<SearchFilter
 					onButtonClicked={(e) => this.props.onButtonClicked(e)}
 					activeButton={this.props.activeButton}

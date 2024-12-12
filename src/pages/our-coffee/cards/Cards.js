@@ -17,12 +17,6 @@ class Cards extends Component {
 		this.updateState();
 	}
 
-	updateState = () => {
-		this.onCoffeeLoading();
-
-		this.coffeeApi.getAllCoffee().then(this.onCoffeeLoaded);
-	};
-
 	onCoffeeLoading = () => {
 		this.setState({ loading: true });
 	};
@@ -31,43 +25,69 @@ class Cards extends Component {
 		this.setState({ allCoffee, loading: false });
 	};
 
+	updateState = () => {
+		this.onCoffeeLoading();
+		this.coffeeApi.getAllCoffee().then(this.onCoffeeLoaded);
+	};
+
+	searchEmp = (items) => {
+		const { term } = this.props
+
+		if (term().length === 0) return items;
+
+		return items.filter((item) => {
+			return item.name.indexOf(term()) > -1;
+		});
+	};
+	
+	onFiltered = (arr) => {
+		const { activeButton } = this.props;
+		switch (activeButton()) {
+			case "Central America":
+				return arr.filter((item) => item.region === "Central America");
+			case "Africa":
+				return arr.filter((item) => item.region === "Africa");
+			case "South America":
+				return arr.filter((item) => item.region === "South America");
+			default:
+				return arr;
+		}
+	};
+
 	renderItems(arr) {
-		const items = arr.map((item, id) => {
+
+		const items = arr.map((item) => {
 			return (
 				<DynamicCards
-                    key={item.id}
+					key={item.id}
 					img={item.img}
 					title={item.name}
-                    region={item.region}
+					region={item.region}
 					price={item.price}
 				/>
 			);
 		});
-
 		return <div className='cards__items'>{items}</div>;
 	}
 
 	render() {
+		const { allCoffee } = this.state;
+
+		const items = this.renderItems(this.onFiltered(this.searchEmp(allCoffee)));
+
 		if (this.state.loading) {
 			return (
-				<section
-					className='cards'>
+				<section className='cards'>
 					<div className='container'>
-						<h1 className="title">Loading...</h1>
+						<h1 className='title'>Loading...</h1>
 					</div>
 				</section>
 			);
 		}
-		const { allCoffee } = this.state;
-
-		const items = this.renderItems(allCoffee);
 
 		return (
-			<section
-				className='cards'>
-				<div className='container'>
-					{items}
-				</div>
+			<section className='cards'>
+				<div className='container'>{items}</div>
 			</section>
 		);
 	}
