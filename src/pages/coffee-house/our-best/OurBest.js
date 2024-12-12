@@ -1,5 +1,5 @@
 import { Component } from "react";
-import StaticCards from "../../../components/static-cards/StaticCards";
+import Card from "../../../components/card/Card";
 import CoffeApi from "../../../services/CoffeeApi";
 
 import "./OurBest.css";
@@ -37,11 +37,11 @@ class OurBest extends Component {
 			}
 
 			return (
-				<StaticCards
+				<Card
+					key={item.id}
 					img={item.img}
 					title={item.name}
 					price={item.price}
-					key={item.id}
 				/>
 			);
 		});

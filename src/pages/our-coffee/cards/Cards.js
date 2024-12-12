@@ -3,7 +3,7 @@ import { Component } from "react";
 import CoffeApi from "../../../services/CoffeeApi";
 
 import "./Cards.css";
-import DynamicCards from "../../../components/dynamic-cards/DynamicCards";
+import Card from "../../../components/card/Card";
 
 class Cards extends Component {
 	state = {
@@ -58,12 +58,12 @@ class Cards extends Component {
 
 		const items = arr.map((item) => {
 			return (
-				<DynamicCards
+				<Card
 					key={item.id}
 					img={item.img}
 					title={item.name}
-					region={item.region}
 					price={item.price}
+					region={item.region}
 				/>
 			);
 		});

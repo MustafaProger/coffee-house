@@ -1,3 +1,11 @@
+/* .cards__item-dynamic::before {
+    height: 240px;
+}
+
+.cards__item-region {
+    text-align: left;
+} */
+
 .cards__item {
     position: relative;
     top: 0;
