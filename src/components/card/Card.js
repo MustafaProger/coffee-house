@@ -1,36 +1,46 @@
 import { Component } from "react";
+import Modal from "../modal/Modal";
+
 import "./Card.css";
 
 class Card extends Component {
+	state = {
+		isModalOpen: false, // Управление модальным окном
+	};
+
+	onOpenModal = () => {
+		this.setState({ isModalOpen: true }); // Открыть модальное окно
+	};
+
+	onCloseModal = () => {
+		this.setState({ isModalOpen: false }); // Закрыть модальное окно
+	};
+
 	render() {
-		const { img, title, price, region = null } = this.props;
+		const {
+			aboutCoffee: { img, name, price, region = null },
+			aboutCoffee,
+		} = this.props;
 
 		return (
-			<div className='cards__item'>
-				<div className='cards__item-img'>
-					<img
-						src={img}
-						alt={`Изображение кофе: ${title}`}
-						style={{ width: 300, height: 200 }}
-					/>
+			<>
+				<div className="cards__item" onClick={this.onOpenModal}>
+					<div className="cards__item-img">
+						<img
+							src={img}
+							alt={`Изображение кофе: ${name}`}
+							style={{ width: 300, height: 200 }}
+						/>
+					</div>
+					<p className="cards__item-title">{name}</p>
+					<p className="cards__item-region">{region}</p>
+					<p className="cards__item-price">{price + " $"}</p>
 				</div>
-				<p className='cards__item-title'>{title}</p>
-				{region ? (
-					<>
-						<p className='cards__item-region'>{region}</p>
-						<style>{`
-							.cards__item::before {
-								height: 240px;
-							}
 
-							.cards__item-region {
-								text-align: left;
-							}
-						`}</style>
-					</>
-				) : null}
-				<p className='cards__item-price'>{price + " $"}</p>
-			</div>
+				{this.state.isModalOpen && (
+					<Modal data={aboutCoffee} onClose={this.onCloseModal} />
+				)}
+			</>
 		);
 	}
 }

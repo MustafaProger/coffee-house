@@ -36,7 +36,10 @@ class CoffeApi {
 			descr: coffee.description,
 			price: coffee.price,
 			region: coffee.region,
-			img: coffee.image_url
+			img: coffee.image_url,
+			roast_level: coffee.roast_level,
+			flavor_profile: coffee.flavor_profile,
+			grind_option: coffee.grind_option
 		}
 	}
 }

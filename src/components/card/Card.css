@@ -1,19 +1,12 @@
-/* .cards__item-dynamic::before {
-    height: 240px;
-}
-
-.cards__item-region {
-    text-align: left;
-} */
-
 .cards__item {
+    cursor: pointer;
     position: relative;
     top: 0;
     left: 0;
     z-index: 1;
     padding: 20px;
     width: 180px;
-    height: 210px;
+    height: 240px;
     transition: all 0.3s;
 }
 
@@ -23,7 +16,7 @@
     top: 0;
     left: 0;
     width: 180px;
-    height: 210px;
+    height: 240px;
     padding: 20px;
     z-index: -1;
     background-color: #fff;

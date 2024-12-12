@@ -1,9 +1,9 @@
 import { Component } from "react";
 
 import CoffeApi from "../../../services/CoffeeApi";
+import Card from "../../../components/card/Card";
 
 import "./Cards.css";
-import Card from "../../../components/card/Card";
 
 class Cards extends Component {
 	state = {
@@ -60,10 +60,7 @@ class Cards extends Component {
 			return (
 				<Card
 					key={item.id}
-					img={item.img}
-					title={item.name}
-					price={item.price}
-					region={item.region}
+					aboutCoffee={this.state.allCoffee[item.id - 1]}
 				/>
 			);
 		});

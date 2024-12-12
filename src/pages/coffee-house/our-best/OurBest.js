@@ -14,9 +14,7 @@ class OurBest extends Component {
 			return (
 				<Card
 					key={item.id}
-					img={item.img}
-					title={item.name}
-					price={item.price}
+					aboutCoffee={this.props.allCoffee[item.id - 1]}
 				/>
 			);
 		});

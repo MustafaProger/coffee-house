@@ -56,7 +56,7 @@ class Header extends Component {
                 <nav className='navbar'>
                     <StyledLink
                         theme={clazzAnimation}
-                        to='/coffee-house' // Используйте абсолютный путь
+                        to='/' // Используйте абсолютный путь
                         className='link'
                         data-replace='Кофейный дом'>
 						<svg
@@ -97,7 +97,7 @@ class Header extends Component {
                     </StyledLink>
                     <StyledLink
                         theme={clazzAnimation}
-                        to='/' // Обратите внимание на путь, это главная страница
+                        to='/pleasure' // Обратите внимание на путь, это главная страница
                         className='link'
                         data-replace='Для настоящих ценителей'>
                         <span>Для настоящих ценителей</span>
