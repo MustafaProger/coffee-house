@@ -27,9 +27,7 @@ class Modal extends Component {
 		} = this.props.data;
         
 		const { isClosing } = this.state;
-
-		const arrGrind = [...grind_option];
-		console.log(arrGrind);
+		
 		return (
 			<div className={`modal ${isClosing ? "fade-out" : ""}`}>
 				<div className='modal-content'>
