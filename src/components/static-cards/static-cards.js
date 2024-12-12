@@ -10,6 +10,7 @@ class StaticCards extends Component {
 					<img
 						src={img}
 						alt={`Изображение кофе: ${title}`}
+						style={{width: 300, height: 200}}
 					/>
 				</div>
                 <p className="cards__item-title">{title}</p>
