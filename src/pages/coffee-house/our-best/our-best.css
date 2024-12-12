@@ -1,21 +1,21 @@
 .our-best {
-    background: url('./img/our-best.png');
+	background: url("./img/our-best.png");
 }
 
 .our-best .container {
-    padding: 80px 20px;
+	padding: 80px 20px;
 }
 
 .our-best__title {
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
-.cards-static {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 70px;
-    max-width: 800px;
-    margin: 0 auto;
+.cards,
+.cards__items {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 70px;
+	max-width: 900px;
+	margin: 0 auto;
 }
-

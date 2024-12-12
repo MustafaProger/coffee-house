@@ -4,6 +4,8 @@ import AboutBeans from "./about-beans/about-beans";
 import Footer from "../../components/footer/footer";
 import SearchPanel from "../../components/search-panel/SearchPanel";
 import SearchFilter from "../../components/search-filter/SearchFilter";
+import Cards from "./cards/Cards";
+import Filter from "./filter/Filter";
 
 class OurCoffee extends Component {
 
@@ -20,10 +22,8 @@ class OurCoffee extends Component {
 			<>
 				<Hero />
 				<AboutBeans />
-				<div style={{display: 'flex', justifyContent: 'center', margin: "50px 0px"}}>
-					<SearchPanel />
-					<SearchFilter onButtonClicked={(e) => this.handleButtonClicked(e)} activeButton={this.state.activeButton}/>
-				</div>
+				<Filter onButtonClicked={(e) => this.handleButtonClicked(e)} activeButton={this.state.activeButton}/>
+				<Cards/>
 				<Footer />
 			</>
 		);

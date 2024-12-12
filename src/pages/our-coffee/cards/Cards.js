@@ -1,10 +1,11 @@
 import { Component } from "react";
-import StaticCards from "../../../components/static-cards/static-cards";
+
 import CoffeApi from "../../../services/CoffeeApi";
 
-import "./our-best.css";
+import "./Cards.css";
+import DynamicCards from "../../../components/dynamic-cards/DynamicCards";
 
-class OurBest extends Component {
+class Cards extends Component {
 	state = {
 		allCoffee: [],
 		loading: false,
@@ -32,31 +33,26 @@ class OurBest extends Component {
 
 	renderItems(arr) {
 		const items = arr.map((item, id) => {
-			if (id >= 3) {
-				return null;
-			}
-
 			return (
-				<StaticCards
+				<DynamicCards
+                    key={item.id}
 					img={item.img}
 					title={item.name}
+                    region={item.region}
 					price={item.price}
-					key={item.id}
 				/>
 			);
 		});
 
-		return <div className='cards cards-static'>{items}</div>;
+		return <div className='cards__items'>{items}</div>;
 	}
 
 	render() {
 		if (this.state.loading) {
 			return (
 				<section
-					className='our-best'
-					id='our-best'>
+					className='cards'>
 					<div className='container'>
-						<h1 className='title our-best__title'>Наше лучшее</h1>
 						<h1 className="title">Loading...</h1>
 					</div>
 				</section>
@@ -68,10 +64,8 @@ class OurBest extends Component {
 
 		return (
 			<section
-				className='our-best'
-				id='our-best'>
+				className='cards'>
 				<div className='container'>
-					<h1 className='title our-best__title'>Наше лучшее</h1>
 					{items}
 				</div>
 			</section>
@@ -79,4 +73,4 @@ class OurBest extends Component {
 	}
 }
 
-export default OurBest;
+export default Cards;

@@ -1,11 +1,11 @@
 import { Component } from "react";
-import "./static-cards.css";
+import "./DynamicCards.css";
 
-class StaticCards extends Component {
+class DynamicCards extends Component {
 	render() {
-		const { img, title, price } = this.props;
+		const { img, title, region, price } = this.props;
 		return (
-			<div className='cards__item cards__item-static'>
+			<div className='cards__item cards__item-dynamic'>
 				<div className='cards__item-img'>
 					<img
 						src={img}
@@ -14,10 +14,11 @@ class StaticCards extends Component {
 					/>
 				</div>
                 <p className="cards__item-title">{title}</p>
+                <p className="cards__item-region">{region}</p>
                 <p className="cards__item-price">{price + " $"}</p>
 			</div>
 		);
 	}
 }
 
-export default StaticCards;
+export default DynamicCards;

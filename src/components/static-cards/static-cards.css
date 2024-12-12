@@ -1,4 +1,4 @@
-.cards__item-static {
+.cards__item {
     position: relative;
     top: 0;
     left: 0;
@@ -9,7 +9,7 @@
     transition: all 0.3s;
 }
 
-.cards__item-static::before {
+.cards__item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -21,9 +21,10 @@
     background-color: #fff;
     border-radius: 8px;
     opacity: 0.65;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-.cards__item-static .cards__item-img {
+.cards__item .cards__item-img {
     width: 150px;
     height: 130px;
     display: flex;
@@ -32,15 +33,15 @@
     margin: 0 auto;
 }
 
-.cards__item-static .cards__item-img,
-.cards__item-static .cards__item-title {
+.cards__item .cards__item-img,
+.cards__item .cards__item-title {
     text-align: center;
 }
 
-.cards__item-static .cards__item-price {
+.cards__item .cards__item-price {
     text-align: right;
 }
 
-.cards__item-static:hover {
+.cards__item:hover {
     transform: scale(1.1);
 }
