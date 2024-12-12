@@ -1,0 +1,36 @@
+.search-filter {
+	display: flex;
+	justify-content: center;
+	padding: 50px 0;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 890px) {
+	.search-filter {
+		justify-content: center;
+		gap: 10px;
+	}
+
+	.filter .container,
+	.search .container {
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+
+@media (max-width: 485px) {
+	.search-filter {
+		padding: 0;
+	}
+
+	.filter__btns {
+		gap: 10px;
+		flex-direction: column;
+	}
+
+	.filter__btns-item,
+	.search__input {
+		padding: 10px;
+		min-width: 226.5px;
+	}
+}

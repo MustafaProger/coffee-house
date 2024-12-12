@@ -1,7 +1,7 @@
 import { Component } from "react";
-import "./SearchPanel.css";
+import "./Search.css";
 
-class SearchPanel extends Component {
+class Search extends Component {
 
 	state = {
 		term: ''
@@ -14,11 +14,11 @@ class SearchPanel extends Component {
 
 	render() {
 		return (
-			<div className='search-panel'>
+			<div className='search'>
 				<div className='container'>
-					<p className='search-panel__text subtitle'>Поиск</p>
+					<p className='search__text subtitle'>Поиск</p>
 					<input
-                        className="search-panel__input"
+                        className="search__input"
 						type='search'
 						placeholder='Название кофе'
 						onChange={(e) => this.updateTerm(e)}
@@ -29,4 +29,4 @@ class SearchPanel extends Component {
 	}
 }
 
-export default SearchPanel;
+export default Search;

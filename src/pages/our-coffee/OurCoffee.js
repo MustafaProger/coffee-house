@@ -3,7 +3,7 @@ import Hero from "./hero/Hero";
 import AboutBeans from "./about-beans/AboutBeans";
 import Footer from "../../components/footer/Footer";
 import Cards from "./cards/Cards";
-import Filter from "./filter/Filter";
+import Filter from "./search-filter/SearchFilter";
 
 class OurCoffee extends Component {
 	state = {
@@ -37,7 +37,10 @@ class OurCoffee extends Component {
 					activeButton={this.state.activeButton}
 					onSearching={(e) => this.onSearching(e)}
 				/>
-				<Cards activeButton={this.postStateActiveButton} term={this.postStateTerm}/>
+				<Cards
+					activeButton={this.postStateActiveButton}
+					term={this.postStateTerm}
+				/>
 				<Footer />
 			</>
 		);

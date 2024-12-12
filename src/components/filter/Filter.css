@@ -1,21 +1,22 @@
-.search-filter .container {
+.filter .container {
     display: flex;
     gap: 30px;
 }
 
-.search-filter__text {
+.filter__text {
     margin: 0;
 }
 
-.search-filter__btns {
+.filter__btns {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 5px;
+    color: black
 }
 
-.search-filter__btns-item {
+.filter__btns-item {
     padding: 5px 20px;
     cursor: pointer;
     background-color: #fff;
@@ -24,12 +25,12 @@
     transition: all 0.3s;
 }
 
-.search-filter__btns-item:hover {
+.filter__btns-item:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 
 }
 
-.search-filter__btns-item.active {
+.filter__btns-item.active {
     background-color: rgba(0, 0, 0, 0.7);
     color: #fff;
 }

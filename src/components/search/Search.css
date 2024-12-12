@@ -1,15 +1,15 @@
-.search-panel .container{
+.search .container{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.search-panel__text {
+.search__text {
     padding: 0;
     margin: 0;
 }
 
-.search-panel__input {
+.search__input {
     padding: 5px 30px;
     text-align: center;
     border: none;

@@ -1,8 +1,8 @@
 import { Component } from "react";
 
-import "./SearchFilter.css";
+import "./Filter.css";
 
-class SearchFilter extends Component {
+class Filter extends Component {
 	activeBtn = (e) => {
 		this.props.onButtonClicked(e.target.textContent);
 	};
@@ -21,7 +21,7 @@ class SearchFilter extends Component {
 			return (
 				<button
 					type='button'
-					className={`search-filter__btns-item ${clazz} my_style`}
+					className={`filter__btns-item ${clazz} my_style`}
 					key={name}
 					onClick={(e) => this.activeBtn(e)}>
 					{name}
@@ -29,10 +29,10 @@ class SearchFilter extends Component {
 			);
 		});
 		return (
-			<div className='search-filter'>
+			<div className='filter'>
 				<div className='container'>
-					<p className='subtitle search-filter__text'>или фильтрация</p>
-					<div className='search-filter__btns'>
+					<p className='subtitle filter__text'>или фильтрация</p>
+					<div className='filter__btns'>
 						{buttons}
 					</div>
 				</div>
@@ -41,4 +41,4 @@ class SearchFilter extends Component {
 	}
 }
 
-export default SearchFilter;
+export default Filter;
