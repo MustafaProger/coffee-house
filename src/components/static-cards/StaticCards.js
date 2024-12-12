@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./static-cards.css";
+import "./StaticCards.css";
 
 class StaticCards extends Component {
 	render() {

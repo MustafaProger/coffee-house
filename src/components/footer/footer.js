@@ -1,8 +1,8 @@
 import { Component } from "react";
-import Header from "../header/header";
-import Logo from "../logo-line/logo-line";
+import Header from "../header/Header";
+import Logo from "../logo-line/LogoLine";
 
-import "./footer.css";
+import "./Footer.css";
 
 class Footer extends Component {
 	render() {

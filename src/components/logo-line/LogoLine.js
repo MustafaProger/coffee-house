@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import "./logo-line.css";
+import "./LogoLine..css";
 
 class Logo extends Component {
 	render() {

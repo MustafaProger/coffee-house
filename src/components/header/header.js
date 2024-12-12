@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 import logo from "./logo.svg";
-import "./header.css";
+import "./Header.css";
 
 const StyledLink = styled(RouterLink)`
     position: relative;

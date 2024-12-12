@@ -1,8 +1,8 @@
 import { Component } from "react";
-import StaticCards from "../../../components/static-cards/static-cards";
+import StaticCards from "../../../components/static-cards/StaticCards";
 import CoffeApi from "../../../services/CoffeeApi";
 
-import "./our-best.css";
+import "./OurBest.css";
 
 class OurBest extends Component {
 	state = {

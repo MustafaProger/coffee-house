@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import CoffeeHouse from "./pages/coffee-house/coffee-house";
-import OurCoffee from "./pages/our-coffee/our-coffee";
+import CoffeeHouse from "./pages/coffee-house/CoffeeHouse";
+import OurCoffee from "./pages/our-coffee/OurCoffee";
 import ScrollToTop from "./ScrollToTop";
 
 const App = () => {

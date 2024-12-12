@@ -1,7 +1,7 @@
 import { Component } from "react";
 
-import Logo from "../../../components/logo-line/logo-line";
-import "./about.css";
+import Logo from "../../../components/logo-line/LogoLine";
+import "./About.css";
 
 class About extends Component {
 	render() {

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import reportWebVitals from "../../reportWebVitals";
 
-import Hero from "./hero/hero";
-import About from "./about/about";
-import OurBest from "./our-best/our-best";
-import Footer from "../../components/footer/footer";
+import Hero from "./hero/Hero";
+import About from "./about/About";
+import OurBest from "./our-best/OurBest";
+import Footer from "../../components/footer/Footer";
 import Animation from "../../components/animation/animation";
 
 

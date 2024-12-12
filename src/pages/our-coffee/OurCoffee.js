@@ -1,7 +1,7 @@
 import { Component } from "react";
-import Hero from "./hero/hero";
-import AboutBeans from "./about-beans/about-beans";
-import Footer from "../../components/footer/footer";
+import Hero from "./hero/Hero";
+import AboutBeans from "./about-beans/AboutBeans";
+import Footer from "../../components/footer/Footer";
 import Cards from "./cards/Cards";
 import Filter from "./filter/Filter";
 

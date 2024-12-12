@@ -1,7 +1,7 @@
 import { Component } from "react";
-import Logo from "../../../components/logo-line/logo-line";
+import Logo from "../../../components/logo-line/LogoLine";
 import img from './about-beans.png'
-import './about-beans.css'
+import './AboutBeans.css'
 
 class AboutBeans extends Component {
 	render() {
