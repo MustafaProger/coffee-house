@@ -1,8 +1,8 @@
 import { Component } from "react";
 import StaticCards from "../../../components/static-cards/static-cards";
+import CoffeApi from "../../../services/CoffeeApi";
 
 import "./our-best.css";
-import CoffeApi from "../../../services/CoffeeApi";
 
 class OurBest extends Component {
 	state = {
@@ -33,7 +33,7 @@ class OurBest extends Component {
 	renderItems(arr) {
 		const items = arr.map((item, id) => {
 			if (id >= 3) {
-				return;
+				return null;
 			}
 
 			return (

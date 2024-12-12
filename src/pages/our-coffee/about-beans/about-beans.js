@@ -9,13 +9,13 @@ class AboutBeans extends Component {
 			<section className='about-beans'>
 				<div className='container'>
 					<div className='content'>
-						<div class='content__img'>
+						<div className='content__img'>
 							<img
 								src={img}
 								alt="girl's drinking coffee"
 							/>
 						</div>
-						<div class='content__desrc'>
+						<div className='content__desrc'>
 							<h1 className='title'>О наших зернах</h1>
 							<Logo theme='black' />
 							<p className='subtitle'>

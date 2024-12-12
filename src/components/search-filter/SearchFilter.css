@@ -1,0 +1,33 @@
+.search-filter .container {
+    display: flex;
+    gap: 30px;
+}
+
+.search-filter__text {
+    margin: 0;
+}
+
+.search-filter__btns {
+    display: flex;
+    gap: 5px;
+}
+
+.search-filter__btns-item {
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
+.search-filter__btns-item:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+
+.active {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
