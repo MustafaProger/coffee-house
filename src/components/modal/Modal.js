@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 
 import "./Modal.css";
 
@@ -7,11 +7,28 @@ class Modal extends Component {
 		isClosing: false, // Состояние анимации закрытия
 	};
 
+	modalRef = createRef(); // Создаем ref для модального окна
+
+	componentDidMount() {
+		document.addEventListener("mousedown", this.handleOutsideClick); // Подписываемся на событие клика
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener("mousedown", this.handleOutsideClick); // Отписываемся при размонтировании
+	}
+
 	handleClose = () => {
 		this.setState({ isClosing: true }); // Активируем анимацию закрытия
 		setTimeout(() => {
 			this.props.onClose(); // Закрываем окно после завершения анимации
 		}, 300); // Время должно совпадать с продолжительностью анимации в CSS
+	};
+
+	handleOutsideClick = (event) => {
+		// Если клик произошёл вне модального окна
+		if (this.modalRef.current && !this.modalRef.current.contains(event.target)) {
+			this.handleClose();
+		}
 	};
 
 	render() {
@@ -29,8 +46,8 @@ class Modal extends Component {
 		const { isClosing } = this.state;
 		
 		return (
-			<div className={`modal ${isClosing ? "fade-out" : ""}`}>
-				<div className='modal-content'>
+			<div className={`modal ${isClosing ? "fade-out" : ""}`} >
+				<div className='modal-content' ref={this.modalRef}>
 					<button
 						className='modal-close'
 						onClick={this.handleClose}>

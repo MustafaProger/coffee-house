@@ -10,10 +10,14 @@ class Card extends Component {
 
 	onOpenModal = () => {
 		this.setState({ isModalOpen: true }); // Открыть модальное окно
+		document.body.classList.add('no-scroll');
+
 	};
 
 	onCloseModal = () => {
 		this.setState({ isModalOpen: false }); // Закрыть модальное окно
+		document.body.classList.remove('no-scroll');
+
 	};
 
 	render() {
@@ -21,6 +25,8 @@ class Card extends Component {
 			aboutCoffee: { img, name, price, region = null },
 			aboutCoffee,
 		} = this.props;
+
+		const body = document.querySelector('body');
 
 		return (
 			<>
@@ -38,7 +44,10 @@ class Card extends Component {
 				</div>
 
 				{this.state.isModalOpen && (
-					<Modal data={aboutCoffee} onClose={this.onCloseModal} />
+					<>
+						<Modal data={aboutCoffee} onClose={this.onCloseModal} />
+					</>
+
 				)}
 			</>
 		);

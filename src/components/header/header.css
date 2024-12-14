@@ -259,5 +259,6 @@ a.link:hover span {
 
 	.no-scroll {
 		overflow: hidden;
+		background-color: #fff;
 	}
 }
