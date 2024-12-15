@@ -97,7 +97,7 @@ class Header extends Component {
                     </StyledLink>
                     <StyledLink
                         theme={clazzAnimation}
-                        to='/pleasure' // Обратите внимание на путь, это главная страница
+                        to='/random-coffee' // Обратите внимание на путь, это главная страница
                         className='link'
                         data-replace='Для настоящих ценителей'>
                         <span>Для настоящих ценителей</span>

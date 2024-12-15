@@ -1,7 +1,5 @@
 class CoffeApi {
-
-	_apiBase = 'https://fake-coffee-api.vercel.app/api'
-
+	_apiBase = "https://fake-coffee-api.vercel.app/api";
 
 	async getResource(url = this._apiBase) {
 		let res = await fetch(url);
@@ -39,8 +37,8 @@ class CoffeApi {
 			img: coffee.image_url,
 			roast_level: coffee.roast_level,
 			flavor_profile: coffee.flavor_profile,
-			grind_option: coffee.grind_option
-		}
+			grind_option: coffee.grind_option,
+		};
 	}
 }
 
