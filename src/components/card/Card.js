@@ -26,8 +26,6 @@ class Card extends Component {
 			aboutCoffee,
 		} = this.props;
 
-		const body = document.querySelector('body');
-
 		return (
 			<>
 				<div className="cards__item" onClick={this.onOpenModal}>

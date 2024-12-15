@@ -103,6 +103,9 @@
 }
 
 @media (max-width: 620px) {	
+	.modal-close {
+		right: 0;
+	}
 
 	.modal__text {
 		padding: 0;

@@ -1,14 +1,14 @@
 import { Component } from "react";
-
 import CoffeApi from "../../../services/CoffeeApi";
 import Card from "../../../components/card/Card";
-
 import "./Cards.css";
 
 class Cards extends Component {
 	state = {
 		allCoffee: [],
 		loading: false,
+		currentPage: 1,
+		itemsPerPage: 6,
 	};
 
 	coffeeApi = new CoffeApi();
@@ -31,7 +31,7 @@ class Cards extends Component {
 	};
 
 	searchEmp = (items) => {
-		const { term } = this.props
+		const { term } = this.props;
 
 		if (term().length === 0) return items;
 
@@ -39,7 +39,7 @@ class Cards extends Component {
 			return item.name.indexOf(term()) > -1;
 		});
 	};
-	
+
 	onFiltered = (arr) => {
 		const { activeButton } = this.props;
 		switch (activeButton()) {
@@ -55,36 +55,104 @@ class Cards extends Component {
 	};
 
 	renderItems(arr) {
+		const { currentPage, itemsPerPage } = this.state;
 
-		const items = arr.map((item) => {
+		const startIndex = (currentPage - 1) * itemsPerPage;
+		const endIndex = startIndex + itemsPerPage;
+
+		const currentItems = arr.slice(startIndex, endIndex);
+
+		const items = currentItems.map((item) => {
 			return (
 				<Card
 					key={item.id}
-					aboutCoffee={this.state.allCoffee[item.id - 1]}
+					aboutCoffee={item}
 				/>
 			);
 		});
-		return <div className='cards__items'>{items}</div>;
+		return <div className="cards__items">{items}</div>;
+	}
+
+	onPageChange = (pageNumber) => {
+		this.setState({ currentPage: pageNumber }, () => {
+			// Прокручиваем к первой карточке при смене страницы
+			this.scrollToFirstCard();
+		});
+	};
+
+	scrollToFirstCard = () => {
+		const firstCard = document.querySelector(".cards__item");
+		if (firstCard) {
+			// Получаем позицию первого элемента
+			const targetPosition = firstCard.getBoundingClientRect().top + window.pageYOffset;
+			const startPosition = window.pageYOffset;
+			const distance = targetPosition - startPosition - 100; // Учитываем отступ 100px для navbar
+			const duration = 1000;
+			let startTime = null;
+	
+			const ease = (t, b, c, d) => {
+				t /= d / 2;
+				if (t < 1) return (c / 2) * t * t + b;
+				t--;
+				return (-c / 2) * (t * (t - 2) - 1) + b;
+			};
+	
+			const scrollAnimation = (currentTime) => {
+				if (startTime === null) startTime = currentTime;
+				const timeElapsed = currentTime - startTime;
+				const run = ease(timeElapsed, startPosition, distance, duration);
+				window.scrollTo(0, run);
+				if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
+			};
+	
+			requestAnimationFrame(scrollAnimation);
+		}
+	};
+
+	renderPagination(totalItems) {
+		const { itemsPerPage, currentPage } = this.state;
+
+		const totalPages = Math.ceil(totalItems / itemsPerPage);
+		const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+		return (
+			<div className="pagination">
+				{pageNumbers.map((number) => (
+					<button
+						key={number}
+						className={`pagination__button ${
+							currentPage === number ? "active" : ""
+						}`}
+						onClick={() => this.onPageChange(number)}
+					>
+						{number}
+					</button>
+				))}
+			</div>
+		);
 	}
 
 	render() {
-		const { allCoffee } = this.state;
+		const { allCoffee, loading } = this.state;
 
-		const items = this.renderItems(this.onFiltered(this.searchEmp(allCoffee)));
+		const filteredItems = this.onFiltered(this.searchEmp(allCoffee));
 
-		if (this.state.loading) {
+		if (loading) {
 			return (
-				<section className='cards'>
-					<div className='container'>
-						<h1 className='title'>Loading...</h1>
+				<section className="cards">
+					<div className="container">
+						<h1 className="title">Loading...</h1>
 					</div>
 				</section>
 			);
 		}
 
 		return (
-			<section className='cards'>
-				<div className='container'>{items}</div>
+			<section className="cards">
+				<div className="container">
+					{this.renderItems(filteredItems)}
+					{this.renderPagination(filteredItems.length)}
+				</div>
 			</section>
 		);
 	}
