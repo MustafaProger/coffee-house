@@ -99,8 +99,8 @@ class Header extends Component {
                         theme={clazzAnimation}
                         to='/random-coffee' // Обратите внимание на путь, это главная страница
                         className='link'
-                        data-replace='Для настоящих ценителей'>
-                        <span>Для настоящих ценителей</span>
+                        data-replace='Не знаешь какой кофе выбрать?'>
+                        <span>Не знаешь какой кофе выбрать?</span>
                     </StyledLink>
                 </nav>
             </header>

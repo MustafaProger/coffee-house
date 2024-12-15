@@ -1,6 +1,13 @@
+/* .container {
+    text-align: center;
+} */
 
+.random-card .cards__item {
+    margin: 0 auto;
+}
 
 .random-button {
+    margin: 100px auto 50px auto;
 	padding: 10px 20px;
 	font-size: 1.2rem;
 	cursor: pointer;
@@ -9,6 +16,7 @@
 	border-radius: 5px;
 	color: white;
 	transition: background-color 0.3s;
+    display: block;
 }
 
 .random-button:hover {

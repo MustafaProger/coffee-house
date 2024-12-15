@@ -2,6 +2,7 @@ import { Component } from "react";
 import Confetti from "react-confetti";
 import Card from "../../components/card/Card";
 import "./RandomCoffee.css";
+import Header from "../../components/header/Header";
 
 class RandomCoffee extends Component {
   state = {
@@ -50,7 +51,7 @@ class RandomCoffee extends Component {
     return (
       <section className="random-coffee">
         <div className="container">
-          <h1 className="title">Не знаете, что выбрать?</h1>
+		<Header theme={'white'}/>
           <button className="random-button" onClick={this.handleRandomCoffee}>
             Случайный кофе
           </button>
