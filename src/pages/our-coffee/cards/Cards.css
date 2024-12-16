@@ -11,10 +11,11 @@
 
 .pagination__button {
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 30px !important;
+    height: 30px !important;
+    color: black;
     border: 1px solid transparent;
-    border-radius: 100%;
+    border-radius: 100% !important;
     transition: all 0.3s;
 }
 

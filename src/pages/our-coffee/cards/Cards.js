@@ -15,6 +15,13 @@ class Cards extends Component {
 
 	componentDidMount() {
 		this.updateState();
+		this.loadPageFromLocalStorage();
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.currentPage !== this.state.currentPage) {
+			this.savePageToLocalStorage();
+		}
 	}
 
 	onCoffeeLoading = () => {
@@ -28,6 +35,17 @@ class Cards extends Component {
 	updateState = () => {
 		this.onCoffeeLoading();
 		this.coffeeApi.getAllCoffee().then(this.onCoffeeLoaded);
+	};
+
+	loadPageFromLocalStorage = () => {
+		const savedPage = localStorage.getItem("currentPage");
+		if (savedPage) {
+			this.setState({ currentPage: parseInt(savedPage) });
+		}
+	};
+
+	savePageToLocalStorage = () => {
+		localStorage.setItem("currentPage", this.state.currentPage);
 	};
 
 	searchEmp = (items) => {
@@ -70,7 +88,7 @@ class Cards extends Component {
 				/>
 			);
 		});
-		return <div className="cards__items">{items}</div>;
+		return <div className='cards__items'>{items}</div>;
 	}
 
 	onPageChange = (pageNumber) => {
@@ -84,19 +102,20 @@ class Cards extends Component {
 		const firstCard = document.querySelector(".cards__item");
 		if (firstCard) {
 			// Получаем позицию первого элемента
-			const targetPosition = firstCard.getBoundingClientRect().top + window.pageYOffset;
+			const targetPosition =
+				firstCard.getBoundingClientRect().top + window.pageYOffset;
 			const startPosition = window.pageYOffset;
 			const distance = targetPosition - startPosition - 100; // Учитываем отступ 100px для navbar
 			const duration = 1000;
 			let startTime = null;
-	
+
 			const ease = (t, b, c, d) => {
 				t /= d / 2;
 				if (t < 1) return (c / 2) * t * t + b;
 				t--;
 				return (-c / 2) * (t * (t - 2) - 1) + b;
 			};
-	
+
 			const scrollAnimation = (currentTime) => {
 				if (startTime === null) startTime = currentTime;
 				const timeElapsed = currentTime - startTime;
@@ -104,7 +123,7 @@ class Cards extends Component {
 				window.scrollTo(0, run);
 				if (timeElapsed < duration) requestAnimationFrame(scrollAnimation);
 			};
-	
+
 			requestAnimationFrame(scrollAnimation);
 		}
 	};
@@ -116,15 +135,14 @@ class Cards extends Component {
 		const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
 		return (
-			<div className="pagination">
+			<div className='pagination'>
 				{pageNumbers.map((number) => (
 					<button
 						key={number}
 						className={`pagination__button ${
 							currentPage === number ? "active" : ""
 						}`}
-						onClick={() => this.onPageChange(number)}
-					>
+						onClick={() => this.onPageChange(number)}>
 						{number}
 					</button>
 				))}
@@ -139,17 +157,17 @@ class Cards extends Component {
 
 		if (loading) {
 			return (
-				<section className="cards">
-					<div className="container">
-						<h1 className="title">Loading...</h1>
+				<section className='cards'>
+					<div className='container'>
+						<h1 className='title'>Loading...</h1>
 					</div>
 				</section>
 			);
 		}
 
 		return (
-			<section className="cards">
-				<div className="container">
+			<section className='cards'>
+				<div className='container'>
 					{this.renderItems(filteredItems)}
 					{this.renderPagination(filteredItems.length)}
 				</div>
