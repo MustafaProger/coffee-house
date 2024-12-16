@@ -1,26 +1,22 @@
-/* .container {
-    text-align: center;
-} */
-
-.random-card .cards__item {
-    margin: 0 auto;
+.randomizer-card .cards__item {
+	margin: 0 auto;
 }
 
-.random-button {
-    margin: 100px auto 50px auto;
-	padding: 10px 20px;
-	font-size: 1.2rem;
-	cursor: pointer;
-	background-color: #ff9800;
-	border: none;
-	border-radius: 5px;
+.randomizer-button {
+	display: block;
+	padding: 15px 60px;
+	background: none;
+	border: 2px solid black;
+	border-radius: 3px;
 	color: white;
-	transition: background-color 0.3s;
-    display: block;
+	margin: 50px auto;
+	transition: all 0.3s;
+
 }
 
-.random-button:hover {
-	background-color: #e68900;
+.randomizer-button:hover {
+	color: #000;
+	background-color: #fff;
 }
 
 .confetti-animation {

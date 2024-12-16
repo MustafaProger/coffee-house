@@ -1,9 +1,11 @@
 import { Component } from "react";
-import Hero from "./hero/Hero";
+import Hero from "../../components/hero/Hero";
 import AboutBeans from "./about-beans/AboutBeans";
 import Footer from "../../components/footer/Footer";
 import Cards from "./cards/Cards";
 import Filter from "./search-filter/SearchFilter";
+
+import './hero/Hero.css'
 
 class OurCoffee extends Component {
 	state = {
@@ -30,7 +32,10 @@ class OurCoffee extends Component {
 	render() {
 		return (
 			<>
-				<Hero />
+				<Hero
+					clazz={"our-coffee"}
+					title={"О нашем кофе"}
+				/>
 				<AboutBeans />
 				<Filter
 					onButtonClicked={(e) => this.handleButtonClicked(e)}

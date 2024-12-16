@@ -1,4 +1,4 @@
-.main {
+.coffee-house {
 	min-height: 600px;
 	height: 100%;
 	padding: 0 0 20px 0;
@@ -8,7 +8,7 @@
 	background-repeat: no-repeat;
 }
 
-.main .content {
+.coffee-house .content {
 	display: flex;
 	min-height: 600px;
 	height: 100%;
@@ -21,7 +21,7 @@
 	margin: 0 auto;
 }
 
-.main .btn {
+.coffee-house .btn {
 	padding: 15px 60px;
 	background: none;
 	border: 2px solid white;
@@ -30,13 +30,13 @@
 	transition: all 0.3s;
 }
 
-.main .btn:hover {
+.coffee-house .btn:hover {
 	color: #000;
 	background-color: #fff;
 }
 
 @media (max-width: 620px) {
-	.main p {
+	.coffee-house p {
 		display: none;
 	}
 }
