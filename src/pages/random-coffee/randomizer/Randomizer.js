@@ -1,14 +1,13 @@
-import { Component } from "react";
-import Confetti from "react-confetti";
+import React, { Component } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Card from "../../../components/card/Card";
 import "./Randomizer.css";
 
 class Randomizer extends Component {
   state = {
     allCoffee: [], // Полный массив кофе
-    shownCoffee: null, // Текущая выбранная карточка
-    usedIndexes: [], // Индексы использованных карточек
-    showConfetti: false, // Флаг для отображения анимации
+    shownCoffee: [], // Массив выбранных карточек
+    isClickable: false, // Состояние для контроля кликабельности
   };
 
   componentDidMount() {
@@ -16,36 +15,62 @@ class Randomizer extends Component {
     this.props.coffeeApi.getAllCoffee().then((allCoffee) => {
       this.setState({ allCoffee });
     });
+
+    // Загружаем выбранные кофе и состояние кликабельности из localStorage
+    const storedCoffee = JSON.parse(localStorage.getItem("randomCoffee"));
+    const storedIsClickable = JSON.parse(localStorage.getItem("isClickable"));
+
+    if (storedCoffee) {
+      this.setState({ shownCoffee: storedCoffee });
+    }
+    if (storedIsClickable !== null) {
+      this.setState({ isClickable: storedIsClickable });
+    }
   }
 
   handleRandomCoffee = () => {
-    const { allCoffee, usedIndexes } = this.state;
+    const { allCoffee } = this.state;
 
-    // Если все кофе использованы, сбрасываем список
-    if (usedIndexes.length === allCoffee.length) {
-      this.setState({ usedIndexes: [], shownCoffee: null }, this.handleRandomCoffee);
-      return;
+    // Массив для хранения случайных кофе
+    const newShownCoffee = [];
+
+    // Выбираем 3 уникальных кофе
+    while (newShownCoffee.length < 3) {
+      const randomIndex = Math.floor(Math.random() * allCoffee.length);
+      const coffee = allCoffee[randomIndex];
+
+      // Проверяем, чтобы выбранное кофе не повторялось
+      if (!newShownCoffee.includes(coffee)) {
+        newShownCoffee.push(coffee);
+      }
     }
 
-    // Находим случайный индекс, который ещё не использовался
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * allCoffee.length);
-    } while (usedIndexes.includes(randomIndex));
-
-    // Обновляем состояние с новым кофе и анимацией
+    // Отключаем кликабельность карт на время анимации
     this.setState({
-      shownCoffee: allCoffee[randomIndex],
-      usedIndexes: [...usedIndexes, randomIndex],
-      showConfetti: true,
-    });
+      shownCoffee: [], // Очищаем текущие карточки с анимацией
+      isClickable: false, // Карты не кликабельны
+    }, () => {
+      // После того как текущие карточки исчезли, обновляем новые карточки
+      setTimeout(() => {
+        this.setState({
+          shownCoffee: newShownCoffee,
+        }, () => {
+          localStorage.setItem("randomCoffee", JSON.stringify(newShownCoffee)); // Сохраняем выбранные карты
+          localStorage.setItem("isClickable", JSON.stringify(false)); // Сохраняем состояние кликабельности
+        });
 
-    // Плавно скрываем конфетти через 2-3 секунды
-    setTimeout(() => this.setState({ showConfetti: false }), 5000); // Устанавливаем 3 секунды
+        // Включаем кликабельность через 500ms (время анимации)
+        setTimeout(() => {
+          this.setState({ isClickable: true }, () => {
+            localStorage.setItem("isClickable", JSON.stringify(true)); // Сохраняем состояние кликабельности
+          });
+        }, 500); // Учитываем время анимации
+      }, 500); // Время, которое дается для завершения анимации исчезновения
+    });
   };
 
   render() {
-    const { shownCoffee, showConfetti } = this.state;
+    const { shownCoffee, isClickable } = this.state;
 
     return (
       <section className="randomizer-coffee">
@@ -54,15 +79,22 @@ class Randomizer extends Component {
             Случайный кофе
           </button>
 
-          {/* Показываем карточку, если кофе выбрано */}
-          {shownCoffee && (
-            <div className="randomizer-card">
-              <Card aboutCoffee={shownCoffee} />
-            </div>
-          )}
-
-          {/* Анимация конфетти с плавным исчезновением */}
-          {showConfetti && <Confetti className="confetti-animation" />}
+          {/* Используем TransitionGroup для обработки входа и выхода карточек */}
+          <TransitionGroup className="randomizer-cards-container">
+            {shownCoffee.map((coffee, index) => (
+              <CSSTransition
+                key={index}
+                timeout={500} // Время анимации
+                classNames="coffee-card" // Имя класса для анимации
+              >
+                <div
+                  className={`randomizer-card ${isClickable ? "" : "non-clickable"}`}
+                >
+                  <Card aboutCoffee={coffee} />
+                </div>
+              </CSSTransition>
+            ))}
+          </TransitionGroup>
         </div>
       </section>
     );

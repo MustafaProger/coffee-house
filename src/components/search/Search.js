@@ -16,7 +16,7 @@ class Search extends Component {
 		return (
 			<div className='search'>
 				<div className='container'>
-					<p className='search__text subtitle'>Поиск</p>
+					<p className='search__text'>Поиск</p>
 					<input
                         className="search__input"
 						type='search'

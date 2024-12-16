@@ -31,7 +31,7 @@ class Filter extends Component {
 		return (
 			<div className='filter'>
 				<div className='container'>
-					<p className='subtitle filter__text'>или фильтрация</p>
+					<p className='filter__text'>или фильтрация</p>
 					<div className='filter__btns'>
 						{buttons}
 					</div>
