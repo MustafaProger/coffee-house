@@ -7,101 +7,72 @@ class Randomizer extends Component {
 	state = {
 		allCoffee: [], // Полный массив кофе
 		shownCoffee: [], // Массив выбранных карточек
-		isClickable: false, // Состояние для контроля кликабельности
+		isLoading: false, // Состояние загрузки данных
 	};
 
 	componentDidMount() {
-		// Загружаем данные через CoffeApi
+		// Загружаем все данные кофе
 		this.props.coffeeApi.getAllCoffee().then((allCoffee) => {
 			this.setState({ allCoffee });
 		});
 
-		// Загружаем выбранные кофе и состояние кликабельности из localStorage
+		// Получаем сохраненные данные из localStorage
 		const storedCoffee = JSON.parse(localStorage.getItem("randomCoffee"));
-		const storedIsClickable = JSON.parse(localStorage.getItem("isClickable"));
-
 		if (storedCoffee) {
 			this.setState({ shownCoffee: storedCoffee });
-		}
-		if (storedIsClickable !== null) {
-			this.setState({ isClickable: storedIsClickable });
 		}
 	}
 
 	handleRandomCoffee = () => {
-		const { allCoffee } = this.state;
+		
+		// Отображаем LOADING
+		this.setState({ isLoading: true, shownCoffee: [] });
 
-		// Массив для хранения случайных кофе
-		const newShownCoffee = [];
+		// Генерация данных
+		this.props.coffeeApi.getAllCoffee().then((updatedCoffee) => {
+			const newShownCoffee = [];
 
-		// Выбираем 3 уникальных кофе
-		while (newShownCoffee.length < 3) {
-			const randomIndex = Math.floor(Math.random() * allCoffee.length);
-			const coffee = allCoffee[randomIndex];
+			while (newShownCoffee.length < 3) {
+				const randomIndex = Math.floor(Math.random() * updatedCoffee.length);
+				const coffee = updatedCoffee[randomIndex];
 
-			// Проверяем, чтобы выбранное кофе не повторялось
-			if (!newShownCoffee.includes(coffee)) {
-				newShownCoffee.push(coffee);
+				if (!newShownCoffee.includes(coffee)) {
+					newShownCoffee.push(coffee);
+				}
 			}
-		}
 
-		// Отключаем кликабельность карт на время анимации
-		this.setState(
-			{
-				shownCoffee: [], // Очищаем текущие карточки с анимацией
-				isClickable: false, // Карты не кликабельны
-			},
-			() => {
-				// После того как текущие карточки исчезли, обновляем новые карточки
-				setTimeout(() => {
-					this.setState(
-						{
-							shownCoffee: newShownCoffee,
-						},
-						() => {
-							localStorage.setItem(
-								"randomCoffee",
-								JSON.stringify(newShownCoffee)
-							); // Сохраняем выбранные карты
-							localStorage.setItem("isClickable", JSON.stringify(false)); // Сохраняем состояние кликабельности
-						}
-					);
+			// Обновляем состояние с новыми карточками
+			this.setState({ shownCoffee: newShownCoffee, isLoading: false });
 
-					// Включаем кликабельность через 500ms (время анимации)
-					setTimeout(() => {
-						this.setState({ isClickable: true }, () => {
-							localStorage.setItem("isClickable", JSON.stringify(true)); // Сохраняем состояние кликабельности
-						});
-					}, 500); // Учитываем время анимации
-				}, 500); // Время, которое дается для завершения анимации исчезновения
-			}
-		);
+			// Сохраняем выбранные карточки
+			localStorage.setItem("randomCoffee", JSON.stringify(newShownCoffee));
+		});
 	};
 
 	render() {
-		const { shownCoffee, isClickable } = this.state;
+		const { shownCoffee, isLoading } = this.state;
 
 		return (
 			<section className='randomizer-coffee'>
 				<div className='container'>
 					<button
 						className='randomizer-button'
-						onClick={this.handleRandomCoffee}>
+						onClick={this.handleRandomCoffee}
+						disabled={isLoading}>
 						Случайный кофе
 					</button>
 
-					{/* Используем TransitionGroup для обработки входа и выхода карточек */}
+					{/* LOADING заголовок */}
+					{isLoading && <h1 className='title'>LOADING...</h1>}
+
+					{/* Анимация карточек */}
 					<TransitionGroup className='randomizer-cards-container'>
 						{shownCoffee.map((coffee, index) => (
 							<CSSTransition
 								key={index}
-								timeout={500} // Время анимации
-								classNames='coffee-card' // Имя класса для анимации
-							>
-								<div
-									className={`randomizer-card ${
-										isClickable ? "" : "non-clickable"
-									}`}>
+								timeout={500}
+								classNames='coffee-card'>
+								<div className='randomizer-card'>
 									<Card aboutCoffee={coffee} />
 								</div>
 							</CSSTransition>
