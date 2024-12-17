@@ -19,7 +19,7 @@ class About extends Component {
 						<div className='content__desrc'>
 							<h1 className='title'>{title}</h1>
 							<Logo theme='black' />
-							<p className='desrc'>
+							<p className='descr'>
 								{descr}
 							</p>
 						</div>

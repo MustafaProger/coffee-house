@@ -12,7 +12,7 @@ class About extends Component {
 				<div className='container'>
 					<div className='title about__title'>О нас</div>
 					<Logo theme='black' />
-					<div className='subtitle about__subtitle'>
+					<div className='about__subtitle descr'>
 					 	О нас Мы — команда, для которой каждый стакан кофе — это
 						искусство и страсть. Мы отбираем только лучшие зерна с самых
 						надежных плантаций, чтобы предоставить вам напитки, которые
