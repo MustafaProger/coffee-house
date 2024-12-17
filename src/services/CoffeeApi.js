@@ -3,32 +3,28 @@ class CoffeApi {
 
 	async getResource(url = this._apiBase) {
 		let res = await fetch(url);
-
 		if (!res.ok) {
 			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
 		}
-
 		return await res.json();
 	}
 
 	async getAllCoffee() {
 		let res = await this.getResource();
-
-		return await res.map(this._transformCoffee);
+		return await Promise.all(
+			res.map((coffee) => this._transformCoffee(coffee))
+		); // Используем стрелочную функцию
 	}
 
 	async getCoffeeById(id, url = this._apiBase) {
 		let res = await fetch(`${url}/${id}`);
-
 		if (!res.ok) {
-			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+			throw new Error(`Could not fetch ${url}/${id}, status: ${res.status}`);
 		}
-
 		return await res.json();
 	}
 
 	async _transformCoffee(coffee) {
-		console.log(coffee.image_url);
 		return {
 			id: coffee.id,
 			name: coffee.name,
@@ -42,7 +38,6 @@ class CoffeApi {
 		};
 	}
 
-	// Функция для проксирования изображений
 	async _getImageUrl(imageUrl) {
 		return `https://feather-polite-delivery.glitch.me/proxy-image?url=${imageUrl}`;
 	}
