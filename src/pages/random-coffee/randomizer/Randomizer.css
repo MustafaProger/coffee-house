@@ -62,25 +62,3 @@
 	pointer-events: none; /* Отключаем все события клика */
 	opacity: 0.6; /* Дополнительно можно сделать карты полупрозрачными */
 }
-
-/* Стили для заголовка LOADING */
-.title {
-	text-align: center;
-	font-size: 2rem;
-	color: #333;
-	margin-top: 20px;
-	animation: loading-blink 1s infinite;
-}
-
-/* Анимация мигания LOADING */
-@keyframes loading-blink {
-	0% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0.5;
-	}
-	100% {
-		opacity: 1;
-	}
-}

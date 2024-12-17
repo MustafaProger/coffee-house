@@ -171,7 +171,7 @@ class Cards extends Component {
 			return (
 				<section className='cards'>
 					<div className='container'>
-						<h1 className='title'>Loading...</h1>
+						<h1 className='loading'>Loading...</h1>
 					</div>
 				</section>
 			);

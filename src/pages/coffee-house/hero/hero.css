@@ -35,7 +35,7 @@
 	background-color: #fff;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 635px) {
 	.coffee-house p {
 		display: none;
 	}

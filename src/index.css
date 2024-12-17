@@ -68,6 +68,28 @@ body {
 	border: none;
 }
 
+/* Стили для заголовка LOADING */
+.loading {
+	text-align: center;
+	font-size: 2rem;
+	color: #333;
+	margin-top: 20px;
+	animation: loading-blink 1s infinite;
+}
+
+/* Анимация мигания LOADING */
+@keyframes loading-blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
 @media (max-width: 768px) {
 	.about-beans .content,
 	.perfect-coffee .content {

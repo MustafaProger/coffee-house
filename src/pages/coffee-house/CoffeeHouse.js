@@ -53,7 +53,7 @@ class CoffeeHouse extends Component {
 					<section className='our-best'>
 						<div className='container'>
 							<h1 className='title our-best__title'>Наше лучшее</h1>
-							<h1 className='title'>Loading...</h1>
+							<h1 className='loading'>Loading...</h1>
 						</div>
 					</section>
 				) : (

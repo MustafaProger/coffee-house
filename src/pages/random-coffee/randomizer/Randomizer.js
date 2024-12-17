@@ -1,37 +1,48 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Card from "../../../components/card/Card";
 import "./Randomizer.css";
 
 class Randomizer extends Component {
 	state = {
-		allCoffee: [], // Полный массив кофе
-		shownCoffee: [], // Массив выбранных карточек
-		isLoading: false, // Состояние загрузки данных
+		allCoffee: [],
+		shownCoffee: [],
+		isLoading: false,
 	};
 
+	cardRefs = []; // Храним ссылки на карточки
+
 	componentDidMount() {
-		// Загружаем все данные кофе
+		// Загружаем все кофе из API
 		this.props.coffeeApi.getAllCoffee().then((allCoffee) => {
 			this.setState({ allCoffee });
 		});
 
-		// Получаем сохраненные данные из localStorage
+		// Загружаем сохраненные данные из localStorage
 		const storedCoffee = JSON.parse(localStorage.getItem("randomCoffee"));
+		const isLoading = JSON.parse(localStorage.getItem("isLoading"));
+
 		if (storedCoffee) {
-			this.setState({ shownCoffee: storedCoffee });
+			this.cardRefs = storedCoffee.map(() => createRef());
+			this.setState({
+				shownCoffee: storedCoffee,
+				isLoading: isLoading || false,
+			});
 		}
 	}
 
 	handleRandomCoffee = () => {
-		
-		// Отображаем LOADING
-		this.setState({ isLoading: true, shownCoffee: [] });
+		const { allCoffee } = this.state;
 
-		// Генерация данных
+		this.setState({ isLoading: true, shownCoffee: [] }, () => {
+			// Сохраняем состояние загрузки в localStorage
+			localStorage.setItem("isLoading", JSON.stringify(true));
+		});
+
 		this.props.coffeeApi.getAllCoffee().then((updatedCoffee) => {
 			const newShownCoffee = [];
 
+			// Выбираем 3 уникальных кофе
 			while (newShownCoffee.length < 3) {
 				const randomIndex = Math.floor(Math.random() * updatedCoffee.length);
 				const coffee = updatedCoffee[randomIndex];
@@ -41,11 +52,14 @@ class Randomizer extends Component {
 				}
 			}
 
-			// Обновляем состояние с новыми карточками
-			this.setState({ shownCoffee: newShownCoffee, isLoading: false });
+			// Создаем refs для новых карточек
+			this.cardRefs = newShownCoffee.map(() => createRef());
 
-			// Сохраняем выбранные карточки
-			localStorage.setItem("randomCoffee", JSON.stringify(newShownCoffee));
+			// Сохраняем выбранные карты и состояние загрузки
+			this.setState({ shownCoffee: newShownCoffee, isLoading: false }, () => {
+				localStorage.setItem("randomCoffee", JSON.stringify(newShownCoffee));
+				localStorage.setItem("isLoading", JSON.stringify(false));
+			});
 		});
 	};
 
@@ -62,17 +76,20 @@ class Randomizer extends Component {
 						Случайный кофе
 					</button>
 
-					{/* LOADING заголовок */}
-					{isLoading && <h1 className='title'>LOADING...</h1>}
+					{/* Показ текста загрузки */}
+					{isLoading && <h1 className='loading'>Loading...</h1>}
 
-					{/* Анимация карточек */}
+					{/* TransitionGroup с nodeRef */}
 					<TransitionGroup className='randomizer-cards-container'>
 						{shownCoffee.map((coffee, index) => (
 							<CSSTransition
 								key={index}
+								nodeRef={this.cardRefs[index]} // Передаем ссылку для каждого элемента
 								timeout={500}
 								classNames='coffee-card'>
-								<div className='randomizer-card'>
+								<div
+									ref={this.cardRefs[index]} // Привязываем ссылку
+									className='randomizer-card'>
 									<Card aboutCoffee={coffee} />
 								</div>
 							</CSSTransition>

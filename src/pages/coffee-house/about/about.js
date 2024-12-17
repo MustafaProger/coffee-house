@@ -10,7 +10,7 @@ class About extends Component {
 				className='about'
 				id='about'>
 				<div className='container'>
-					<div className='title about__title'>О нас</div>
+					<h1 className='title about__title'>О нас</h1>
 					<Logo theme='black' />
 					<div className='about__subtitle descr'>
 					 	О нас Мы — команда, для которой каждый стакан кофе — это
