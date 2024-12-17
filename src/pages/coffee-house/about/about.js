@@ -10,22 +10,21 @@ class About extends Component {
 				className='about'
 				id='about'>
 				<div className='container'>
-					<h1 className='title about__title'>О нас</h1>
+					<h1 className='title about__title'>About Us</h1>
 					<Logo theme='black' />
 					<div className='about__subtitle descr'>
-					 	О нас Мы — команда, для которой каждый стакан кофе — это
-						искусство и страсть. Мы отбираем только лучшие зерна с самых
-						надежных плантаций, чтобы предоставить вам напитки, которые
-						воплощают в себе качество. Через мастерство обжарки мы раскрываем
-						уникальные нотки каждого сорта, создавая кофе с мягким вкусом,
-						насыщенным ароматом и характером.
+						We are a team for whom every cup of coffee is an art and passion. We
+						select only the finest beans from the most trusted plantations to
+						offer you beverages that embody quality. Through the craft of
+						roasting, we unveil the unique notes of each variety, creating
+						coffee with a smooth taste, rich aroma, and character.
 						<br />
 						<br />
-						Наш кофе — это не просто напиток, это целая философия. Будь то
-						бодрящий эспрессо утром или согревающий латте вечером, мы создаем
-						кофе, который дарит вам не только вкус, но и атмосферу. Мы стремимся
-						соединить традиции с современными подходами, чтобы каждая чашка
-						рассказывала о нашем стремлении к совершенству.
+						Our coffee is not just a drink—it’s a philosophy. Whether it’s a
+						refreshing espresso in the morning or a warming latte in the
+						evening, we create coffee that delivers not only flavor but also
+						atmosphere. We strive to combine traditions with modern approaches
+						so that every cup tells the story of our pursuit of perfection.
 					</div>
 				</div>
 			</section>

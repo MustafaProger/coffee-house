@@ -32,7 +32,6 @@ class Randomizer extends Component {
 	}
 
 	handleRandomCoffee = () => {
-		const { allCoffee } = this.state;
 
 		this.setState({ isLoading: true, shownCoffee: [] }, () => {
 			// Сохраняем состояние загрузки в localStorage
@@ -73,7 +72,7 @@ class Randomizer extends Component {
 						className='randomizer-button'
 						onClick={this.handleRandomCoffee}
 						disabled={isLoading}>
-						Случайный кофе
+						Random Coffee
 					</button>
 
 					{/* Показ текста загрузки */}

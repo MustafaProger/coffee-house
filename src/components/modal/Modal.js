@@ -62,27 +62,27 @@ class Modal extends Component {
 					<div className='modal__text'>
 						<h2>{name}</h2>
 						<p>
-							<strong>Цена: </strong>
+							<strong>Price: </strong>
 							<em>{price}</em> $
 						</p>
 						<p>
-							<strong>Страна: </strong>
+							<strong>Country: </strong>
 							<em>{region}</em>
 						</p>
 						<p>
-							<strong>Описание: </strong>
+							<strong>Description: </strong>
 							<em>{descr}</em>
 						</p>
 						<p>
-							<strong>Уровень обжаривания: </strong>
+							<strong>Roast Level: </strong>
 							<em>{roast_level}</em>
 						</p>
 						<p>
-							<strong>Вкусовой профиль: </strong>
+							<strong>Flavor Profile: </strong>
 							<em>{flavor_profile.join(", ")}</em>
 						</p>
 						<p>
-							<strong>Вариант измельчения: </strong>
+							<strong>Grinding Options: </strong>
 							<em>{grind_option.join(", ")}</em>
 						</p>
 					</div>

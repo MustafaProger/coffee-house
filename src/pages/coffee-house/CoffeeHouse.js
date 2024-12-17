@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import reportWebVitals from "../../reportWebVitals";
 
-import Hero from "../../components/hero/Hero"
+import Hero from "../../components/hero/Hero";
 import About from "./about/About";
 import OurBest from "./our-best/OurBest";
 import Footer from "../../components/footer/Footer";
 import Animation from "../../components/animation/animation";
 import CoffeApi from "../../services/CoffeeApi";
 
-import "./hero/Hero.css"
+import "./hero/Hero.css";
 
 class CoffeeHouse extends Component {
 	state = {
@@ -41,12 +41,12 @@ class CoffeeHouse extends Component {
 			<>
 				<Animation />
 				<Hero
-					clazz={'coffee-house'}
-					title={"Все, что вы цените в кофе"}
+					clazz={"coffee-house"}
+					title={"Everything you value in coffee"}
 					descr={
-						"Мы наполняем ваш день энергией и вкусом. Готовы насладиться нашимилучшими зернами?"
+						"We fill your day with energy and flavor. Ready to enjoy our finest beans?"
 					}
-					button={"Узнать больше"}
+					button={"Learn More"}
 				/>
 				<About />
 				{this.state.loading ? (

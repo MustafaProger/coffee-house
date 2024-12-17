@@ -45,14 +45,14 @@ class OurCoffee extends Component {
 	render() {
 		return (
 			<>
-				<Hero clazz={"our-coffee"} title={"О нашем кофе"} />
+				<Hero clazz={"our-coffee"} title={"About Our Coffee"} />
 				<About
 					clazz={"about-beans"}
-					title={"О наших зернах"}
+					title={"About Our Beans"}
 					img={img}
 					alt={"girl's drinking coffee"}
 					descr={
-						"От первого аромата до последнего глотка — наш кофе этопутешествие вкуса и мастерства. Каждое зерно тщательноотбирается с лучших плантаций, чтобы гарантировать качество,которое говорит само за себя. Благодаря тонкому искусствуобжарки, мы раскрываем весь потенциал каждого сорта, создаваянапиток, который поражает своей мягкостью, насыщенным ароматом ихарактером."
+						"From the first aroma to the last sip, our coffee is a journey of flavor and craftsmanship. Each bean is meticulously selected from the finest plantations to ensure quality that speaks for itself. Through the refined art of roasting, we unlock the full potential of every variety, crafting a drink that delights with its smoothness, rich aroma, and distinctive character."
 					}
 				/>
 				<SearchFilter

@@ -14,15 +14,15 @@ class RandomCoffee extends Component {
             <>
 				<Hero
 					clazz={"random-coffee"}
-					title={"Не можешь выбрать кофе?"}
+					title={"Can’t decide on coffee?"}
 				/>
                 <About
                     clazz={"perfect-coffee"}
-                    title={"Идеальный кофе для каждого"}
+                    title={"The Perfect Coffee for Everyone"}
                     img={img}
                     alt={"cup of coffee"}
                     descr={
-                        "Каждое зерно имеет свою историю, и на нашей странице с рандомным кофе вы можете открыть для себя идеальный сорт, который именно вам подойдет. Мы собрали разнообразие вкусов и ароматов, чтобы каждый наш гость мог найти свой уникальный кофе — от мягких и фруктовых до насыщенных и пряных. Не бойтесь экспериментировать! Порой лучший кофе — это тот, который вы еще не пробовали."
+                        "Every bean has its own story, and on our random coffee page, you can discover the perfect variety just for you. We’ve curated a selection of flavors and aromas so that every guest can find their unique coffee—from smooth and fruity to rich and spicy. Don’t be afraid to experiment! Sometimes, the best coffee is the one you haven’t tried yet."
                     }
                 />
                 <Randomizer coffeeApi={this.props.coffeeApi}/>

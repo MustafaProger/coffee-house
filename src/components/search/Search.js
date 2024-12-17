@@ -16,11 +16,11 @@ class Search extends Component {
 		return (
 			<div className='search'>
 				<div className='container'>
-					<p className='search__text'>Поиск</p>
+					<p className='search__text'>Search</p>
 					<input
                         className="search__input"
 						type='search'
-						placeholder='Название кофе'
+						placeholder='Coffee Name'
 						onChange={(e) => this.updateTerm(e)}
 					/>
 				</div>

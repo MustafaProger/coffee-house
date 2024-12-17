@@ -30,7 +30,7 @@ class OurBest extends Component {
 				className='our-best'
 				id='our-best'>
 				<div className='container'>
-					<h1 className='title our-best__title'>Наше лучшее</h1>
+					<h1 className='title our-best__title'>Our Best</h1>
 					{items}
 				</div>
 			</section>
