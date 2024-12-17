@@ -3,41 +3,49 @@ import Hero from "../../components/hero/Hero";
 import About from "../../components/about/About";
 import Footer from "../../components/footer/Footer";
 import Cards from "./cards/Cards";
-import Filter from "./search-filter/SearchFilter";
-
 import img from "./about-beans/about-beans.png";
 import "./hero/Hero.css";
-
+import SearchFilter from "./search-filter/SearchFilter";
 
 class OurCoffee extends Component {
 	state = {
-		activeButton: "All",
-		term: "",
+		activeButton: "All", // текущая выбранная кнопка фильтра
+		term: "", // поисковый запрос
 	};
 
+	componentDidMount() {
+		this.loadActiveButtonFromLocalStorage();
+	}
+
+	// Загрузка состояния активной кнопки из localStorage
+	loadActiveButtonFromLocalStorage = () => {
+		const savedActiveButton = localStorage.getItem("activeButton");
+		if (savedActiveButton) {
+			this.setState({ activeButton: savedActiveButton });
+		}
+	};
+
+	// Сохранение состояния активной кнопки в localStorage
+	saveActiveButtonToLocalStorage = (buttonText) => {
+		localStorage.setItem("activeButton", buttonText);
+	};
+
+	// Обработчик клика по кнопке
 	handleButtonClicked = (buttonText) => {
-		this.setState({ activeButton: buttonText });
+		this.setState({ activeButton: buttonText }, () => {
+			this.saveActiveButtonToLocalStorage(buttonText); // Сохраняем выбранную кнопку
+		});
 	};
 
+	// Обработчик ввода текста для поиска
 	onSearching = (searching) => {
 		this.setState({ term: searching });
-	};
-
-	postStateActiveButton = () => {
-		return this.state.activeButton;
-	};
-
-	postStateTerm = () => {
-		return this.state.term;
 	};
 
 	render() {
 		return (
 			<>
-				<Hero
-					clazz={"our-coffee"}
-					title={"О нашем кофе"}
-				/>
+				<Hero clazz={"our-coffee"} title={"О нашем кофе"} />
 				<About
 					clazz={"about-beans"}
 					title={"О наших зернах"}
@@ -47,14 +55,14 @@ class OurCoffee extends Component {
 						"От первого аромата до последнего глотка — наш кофе этопутешествие вкуса и мастерства. Каждое зерно тщательноотбирается с лучших плантаций, чтобы гарантировать качество,которое говорит само за себя. Благодаря тонкому искусствуобжарки, мы раскрываем весь потенциал каждого сорта, создаваянапиток, который поражает своей мягкостью, насыщенным ароматом ихарактером."
 					}
 				/>
-				<Filter
-					onButtonClicked={(e) => this.handleButtonClicked(e)}
-					activeButton={this.state.activeButton}
-					onSearching={(e) => this.onSearching(e)}
+				<SearchFilter
+					onButtonClicked={this.handleButtonClicked}
+					activeButton={this.state.activeButton} // Передаем строку, а не функцию
+					onSearching={this.onSearching}
 				/>
 				<Cards
-					activeButton={this.postStateActiveButton}
-					term={this.postStateTerm}
+					activeButton={this.state.activeButton} // Передаем строку, а не функцию
+					term={this.state.term} // Передаем строку
 				/>
 				<Footer />
 			</>

@@ -9,6 +9,7 @@ class Cards extends Component {
 		loading: false,
 		currentPage: 1,
 		itemsPerPage: 6,
+		prevActiveButton: "All"
 	};
 
 	coffeeApi = new CoffeApi();
@@ -17,6 +18,17 @@ class Cards extends Component {
 		this.updateState();
 		this.loadPageFromLocalStorage();
 	}
+
+    static getDerivedStateFromProps(nextProps, nextState) {
+     // Если фильтр изменился, сбрасываем страницу на первую
+     if (nextProps.activeButton !== nextState.prevActiveButton) {
+         return {
+             currentPage: 1,
+             prevActiveButton: nextProps.activeButton,
+         };
+     }
+     return null;
+    }
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevState.currentPage !== this.state.currentPage) {
@@ -51,16 +63,16 @@ class Cards extends Component {
 	searchEmp = (items) => {
 		const { term } = this.props;
 
-		if (term().length === 0) return items;
+		if (term.length === 0) return items;
 
 		return items.filter((item) => {
-			return item.name.indexOf(term()) > -1;
+			return item.name.indexOf(term) > -1;
 		});
 	};
 
 	onFiltered = (arr) => {
 		const { activeButton } = this.props;
-		switch (activeButton()) {
+		switch (activeButton) {
 			case "Central America":
 				return arr.filter((item) => item.region === "Central America");
 			case "Africa":
